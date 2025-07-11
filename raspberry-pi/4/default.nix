@@ -29,6 +29,7 @@
 
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxKernel.packages.linux_rpi4;
+    initrd.systemd.tpm2.enable = false;
     initrd.availableKernelModules = [
       "usbhid"
       "usb_storage"
