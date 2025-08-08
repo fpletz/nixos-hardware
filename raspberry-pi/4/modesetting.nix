@@ -38,7 +38,7 @@ in
     hardware.deviceTree = {
       overlays = [
         # Equivalent to:
-        # https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/cma-overlay.dts
+        # https://github.com/raspberrypi/linux/blob/rpi-6.12.y/arch/arm/boot/dts/overlays/cma-overlay.dts
         {
           name = "rpi4-cma-overlay";
           dtsText = ''
@@ -59,7 +59,7 @@ in
           '';
         }
         # Equivalent to:
-        # https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/vc4-fkms-v3d-overlay.dts
+        # https://github.com/raspberrypi/linux/blob/rpi-6.12.y/arch/arm/boot/dts/overlays/vc4-fkms-v3d-rpi4-overlay.dts
         {
           name = "rpi4-vc4-fkms-v3d-overlay";
           dtsText = ''
@@ -95,6 +95,13 @@ in
                 target = <&vc4>;
                 __overlay__ {
                   status = "okay";
+                };
+              };
+
+              fragment@5 {
+                target-path = "/chosen";
+                __overlay__  {
+                  bootargs = "clk_ignore_unused";
                 };
               };
             };
